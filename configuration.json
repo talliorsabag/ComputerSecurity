@@ -1,0 +1,19 @@
+{
+    "password": {
+        "length": 8,
+        "chars": {
+            "uppercase": true,
+            "lowercase": true,
+            "numbers": true,
+            "special": true
+        },
+        "history_limit": 3,
+        "avoid_sequence": [
+            "abc",
+            "123"
+        ]
+    },
+    "login": {
+        "num_of_login_attempts": 3
+    }
+}
