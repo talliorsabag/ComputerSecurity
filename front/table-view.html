@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="table-view.js"></script>
+    <link rel="stylesheet" href="tabler.css">
+</head>
+<body class="theme-dark">
+<div clas="page page-center">
+    <div class="container container-xxl py-4">
+        <h2 class="h2 text-center mb-4" id="info_headear">Our Lovely Clients</h2>
+        <div class="card card-md">
+            <div class="card-body border-bottom py-3">
+                <div class="d-flex">
+                    <div class="text-muted input-group-sm d-inline-flex" style="width: 10rem">
+                        <span> Showing</span>
+                        <input class="from-page form-control form-control-sm" disabled>
+                        <span class="input-group-text">-</span>
+                        <input class="to-page form-control form-control-sm" disabled>
+                    </div>
+                    <label id="add-client-label" for="add-client-trigger" class="btn btn-primary ms-auto btn-sm">Change Password</label>
+                    <input type="checkbox" id="add-client-trigger">
+                    <div class="modal modal-blur fade show" id="add-client-modal">
+                        <div class="modal-dialog page-center">
+                            <form class="modal-content" action="/add-client" method="post" id="change-password-form">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Change Password</h5>
+                                    <label for="add-client-trigger" class="btn-close"
+                                           data-bs-dismiss="modal" aria-label="Close"></label>
+                                </div>
+                                <div class="modal-body">
+
+                                    <label class="form-label">Enter email</label>
+                                    <input autocomplete="off" id="change-password-email" type="email" class="form-control" name="email"
+                                           placeholder="name@example.com" required>
+                                    <label class="form-label">Enter old password</label>
+                                    <input autocomplete="off" id="old-password" type="password" class="form-control" name="oldPass"
+                                           placeholder="********" required>
+                                    <label class="form-label">Enter new password</label>
+                                    <input autocomplete="off" id="new-password" type="password" class="form-control" name="newPass"
+                                           placeholder="********" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary ms-auto" id="change-password-button">
+                                        Change password
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <label id="change-password-label" for="change-password-trigger" class="btn btn-primary ms-auto btn-sm">Add
+                        Client</label>
+                    <input type="checkbox" id="change-password-trigger">
+                    <div class="modal modal-blur fade show" id="change-password-modal">
+                        <div class="modal-dialog page-center">
+                            <form class="modal-content" action="/change-password" method="post" id="addClient">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add Clients</h5>
+                                    <label for="change-password-trigger" class="btn-close"
+                                           data-bs-dismiss="modal" aria-label="Close"></label>
+                                </div>
+                                <div class="modal-body">
+                                    <label class="form-label">enter first name</label>
+                                    <input autocomplete="off" id="firsst-name" type="text" class="form-control" name="firstName"
+                                           placeholder="John" required>
+                                    <label class="form-label">enter last name</label>
+                                    <input autocomplete="off" id="last-name" type="text" class="form-control" name="lastName"
+                                           placeholder="Smith" required>
+                                    <label class="form-label">enter email</label>
+                                    <input autocomplete="off" id="email" type="email" class="form-control" name="email"
+                                           placeholder="name@example.com" required>
+                                    <label class="form-label" >enter city</label>
+                                    <input autocomplete="off" id="city" type="text" class="form-control" name="city"
+                                           placeholder="Nof HaGalil" required>
+                                    <label class="form-label">enter phone number</label>
+                                    <input autocomplete="off" id="phoneNum" type="tel" class="form-control" name="phoneNum" required>
+                                    <div class="text-center h-3">
+                                        <label id="client added" class="invisible">An email has been sent
+                                            to:yourMail</label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary ms-auto" id="insert-user">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="icon icon-tabler icon-tabler-mail" width="24"
+                                             height="24" viewBox="0 0 24 24" stroke-width="2"
+                                             stroke="currentColor" fill="none" stroke-linecap="round"
+                                             stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                            <polyline points="3 7 12 13 21 7"></polyline>
+                                        </svg>
+                                        Add client
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="ms-auto">
+                        <form action="/searchuser" action="POST" id="search-form">
+                        Search:
+                        <div class="ms-2 d-inline-block">
+                            <input id="search-bar" type="text" class="form-control form-control-sm"
+                                   aria-label="Search invoice" placeholder="Search...">
+                        </div>
+                        <button class="btn btn-primary ms-auto" id="search-user-button">
+                            Search
+                        </button>
+                    </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-vector card-table">
+                    <thead>
+                    <th><input id="select-all" class="form-check-input m-0 align-middle" type="checkbox"></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>city</th>
+                    <th>Phone Number</th>
+                    <th>
+                        <button id="delete-selected" class="delete-user-btn" title="Delete Selected Users">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
+                                 width="24"
+                                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="7" cy="7" r="4"></circle>
+                                <path d="M19 9l4 4m0-4-4 4"></path>
+                                <path d="M1 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path>
+                                <path d="M14 3.13a4 4 0 0 1 0 7.75"></path>
+                                <path d="M19 21v-2a4 4 0 0 0-3-3.85"></path>
+                            </svg>
+                        </button>
+                    </th>
+                    </thead>
+                    <tbody id="table-content">
+                    </tbody>
+                </table>
+            </div>
+            <div id="table-nav" class="card-body py-3 card-footer d-flex align-items-center">
+                <div class="text-muted input-group-sm d-inline-flex" style="width: 10rem">
+                    <span> Showing</span>
+                    <input class="from-page form-control form-control-sm" disabled>
+                    <span class="input-group-text">-</span>
+                    <input class="to-page form-control form-control-sm" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

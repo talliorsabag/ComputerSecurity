@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="registration-page.js"></script>
+  <link rel="stylesheet" href="tabler.css">
+</head>
+<body class="theme-dark">
+<div class="page page-center">
+  <div class="container container-tight py-4">
+    <div class="card card-md">
+      <div class="card-body">
+        <h2 class="h2 text-center mb-4">Register to the best page ever</h2>
+        <h2>The password must contain 8 signs with the 1 capital 1 small 1 digit 1 special char</h2>
+        <div>
+          <form action="/register" method="post" id="signup-form">
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input id="email" type="email" class="form-control" placeholder="your@email.com" required>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">First name</label>
+              <input id="firsst-name" type="text" class="form-control" placeholder="Johny B." required>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Last name</label>
+              <input id="last-name" type="text" class="form-control" placeholder="Good" required>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Phone number</label>
+              <input id="phone-number" type="tel" class="form-control" name="phoneNum" placeholder="XXX-XXX-XXXX" pattern="([0-9]{3}-[0-9]{3}-[0-9]{4})|([0-9]{3} [0-9]{3} [0-9]{4}|[0-9]{10})" title="Phone number should be in the format XXX-XXX-XXXX, XXX XXX XXXX or XXXXXXXXXX" required>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Password</label>
+              <div class="input-group input-group-flat">
+                <input id="password" type="password" class="form-control" placeholder="Your password"
+                       autocomplete="off">
+                <span id="show-password" title="Show password" class="input-group-text">
+                                <a class="link-secondary" data-bs-toggle="tooltip" aria-label="Show password"
+                                   data-bs-original-title="Show password"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                         viewBox="0 0 24 24"
+                                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <circle cx="12" cy="12" r="2"></circle>
+                                        <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path></svg>
+                                </a>
+                            </span>
+              </div>
+            </div>
+                      <div class="form-footer">
+            <button id="sign-up" class="btn btn-primary w-100" title="Please confirm the terms and policy.">Sign up</button>
+          </div>
+          </form>
+            <input type="checkbox" id="terms-and-policy-trigger">
+            <div class="modal modal-blur fade show" id="terms-and-policy-modal">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" action="/change-mail" method="post">
+                  <div class="modal-header">
+                    <h5 class="modal-title">terms-and-policy</h5>
+                    <label for="terms-and-policy-trigger" class="btn-close"
+                           data-bs-dismiss="modal" aria-label="Close"></label>
+                  </div>
+                  <div class="modal-body">
+                    <label class="form-label">we legally own you now, yay!</label><br>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <input type="checkbox" class="form-check-input" id="terms-and-policy-input">
+            <label for="terms-and-policy-input" class="input-label"> I read amd agree to the</label>
+            <label class="" for="terms-and-policy-trigger" id="terms-and-policy-label">terms and policy.</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
